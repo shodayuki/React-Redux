@@ -9,7 +9,7 @@ export const addTodo = (text) => {
 	};
 };
 
-export const delteTodo = (index) => {
+export const deleteTodo = (index) => {
 	return {
 		type: DELETE_TODO,
 		index

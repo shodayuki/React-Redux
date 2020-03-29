@@ -29,7 +29,7 @@ describe('todoReducerのテスト', () => {
 
 		const todo0 = new Todo(`${prefixText}0`);
 		const todo1 = new Todo(`${prefixText}1`);
-		const todo2 = new Todo{`${prefixText}2`};
+		const todo2 = new Todo(`${prefixText}2`);
 
 		expect(state).toStrictEqual([
 			todo0,
@@ -59,7 +59,7 @@ describe('todoReducerのテスト', () => {
 		expect( state[targetIndex].hasCompleted() ).toStrictEqual(false);
 
 		const toggleAction = toggleTodoCompleted(targetIndex);
-		state = todoReducer(state, toggleACtion);
+		state = todoReducer(state, toggleAction);
 
 		expect( state[targetIndex].hasCompleted() ).toStrictEqual(true);
 	});

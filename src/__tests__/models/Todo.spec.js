@@ -10,7 +10,7 @@ describe('models/Todo.jsのテスト', () => {
 
 	it('hasCompletedメソッドを実行するとthis._completedの値が取得できる', () => {
 		const todo = new Todo('ダミー');
-		expect( todo.hadCompleted() ).toStrictEqual( todo._completed );
+		expect( todo.hasCompleted() ).toStrictEqual( todo._completed );
 	});
 
 	it('toggleメソッドを実行するとthis._completedのbooleanの値が切り替わる', () => {
