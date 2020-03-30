@@ -25,12 +25,12 @@ export const todoReducer = (state = [], action) => {
 
 		case DELETE_TODO:
 			return state.filter((todo, index) => {
-				return action.index !== index;
+				return action.id !== todo.id;
 			});
 
 		case TOGGLE_TODO_COMPLETED:
 			return state.map((todo, index) => {
-				if (action.index !== index) {
+				if (action.id !== todo.id) {
 					return todo;
 				}
 
