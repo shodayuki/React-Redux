@@ -14,7 +14,9 @@ describe('todoReducerのテスト', () => {
 		const newState = todoReducer(initialState, action);
 		const todo = new Todo(dummyText);
 
-		expect(newState).toStrictEqual([todo]);
+		expect(newState[0] instanceof Todo).toStrictEqual(true);
+		expect(newState[0].text).toStrictEqual(dummyText);
+		expect(newState[0].hasCompleted()).toStrictEqual(false);
 	});
 
 	it('action.type === DELETE_TODOのとき、index番号の要素を削除した配列を返す', () => {
@@ -25,26 +27,22 @@ describe('todoReducerのテスト', () => {
 			const text = prefixText + i;
 			const action = addTodo(text);
 			state = todoReducer(state, action);
+
+			expect(state[i] instanceof Todo).toStrictEqual(true);
+			expect(state[i].text).toStrictEqual(text);
+			expect(state[i].hasCompleted()).toStrictEqual(false);
 		}
-
-		const todo0 = new Todo(`${prefixText}0`);
-		const todo1 = new Todo(`${prefixText}1`);
-		const todo2 = new Todo(`${prefixText}2`);
-
-		expect(state).toStrictEqual([
-			todo0,
-			todo1,
-			todo2
-		]);
 
 		// インデックス番号1を指定して、
 		// 「action.type === DELETE_TODO」でreducerを実行
-		const targetIndex = 1;
-		const deleteAction = deleteTodo(targetIndex);
+		const targetId = state[1].id;
+		const deleteAction = deleteTodo(targetId);
+		const copiedState = [...state];
 		state = todoReducer(state, deleteAction);
+
 		expect(state).toStrictEqual([
-			todo0,
-			todo2
+			copiedState[0],
+			copiedState[2]
 		]);
 	});
 
@@ -58,7 +56,9 @@ describe('todoReducerのテスト', () => {
 
 		expect( state[targetIndex].hasCompleted() ).toStrictEqual(false);
 
-		const toggleAction = toggleTodoCompleted(targetIndex);
+		const id = state[targetIndex].id;
+
+		const toggleAction = toggleTodoCompleted(id);
 		state = todoReducer(state, toggleAction);
 
 		expect( state[targetIndex].hasCompleted() ).toStrictEqual(true);
