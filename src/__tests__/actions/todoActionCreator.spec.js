@@ -21,25 +21,25 @@ describe('todoActionCreatorのテスト', () => {
 	});
 
 	it('deleteTodo関数', () => {
-		const indexValue = 1;
-		const action = deleteTodo(indexValue);
+		const id = 1;
+		const action = deleteTodo(id);
 
 		expect( action ).toStrictEqual(
 			{
 				type: DELETE_TODO,
-				index: indexValue
+				id
 			}
 		);
 	});
 
 	it('toggleTodoCompleted関数', () => {
-		const indexValue = 1;
-		const action = toggleTodoCompleted(indexValue);
+		const id = 1;
+		const action = toggleTodoCompleted(id);
 
 		expect( action ).toStrictEqual(
 			{
 				type: TOGGLE_TODO_COMPLETED,
-				index: indexValue
+				id: id
 			}
 		);
 	});
