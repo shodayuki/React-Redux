@@ -1,0 +1,9 @@
+.Form-container {
+  text-align: right;
+}
+
+.Form-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
