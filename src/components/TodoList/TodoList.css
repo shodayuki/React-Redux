@@ -1,0 +1,12 @@
+.TodoList-item {
+  border: 1px solid #000;
+  list-style: none;
+}
+
+.TodoList-item-completed {
+  text-decoration: line-through;
+}
+
+.TodoList-item:hover {
+  background-color: #adc6ff;
+}
